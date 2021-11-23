@@ -28,7 +28,7 @@ const ModalAddTransaction = ({ open, toggleModal }) => {
   const [isChecked, setIsChecked] = useState(true);
   const [category, setCategory] = useState('');
   const [amount, setAmount] = useState('');
-  const [date, setDate] = useState(dateNow);
+  const [date, setDate] = useState('');
   const [comment, setComment] = useState('');
 
   const { categories } = useSelector(categoriesSelectors.getExpenseCategories);
@@ -48,9 +48,7 @@ const ModalAddTransaction = ({ open, toggleModal }) => {
       case 'amount':
         return setAmount(value);
       case 'date':
-        return setDate(
-          sliceTime(value + ' ' + new Date().toLocaleTimeString()),
-        );
+        return setDate(value + ' ' + new Date().toLocaleTimeString());
       case 'comment':
         return setComment(value);
       default:
@@ -68,7 +66,7 @@ const ModalAddTransaction = ({ open, toggleModal }) => {
   const reset = () => {
     setCategory('');
     setAmount('');
-    setDate(dateNow);
+    setDate('');
     setComment('');
     setIsChecked(true);
   };
@@ -85,6 +83,7 @@ const ModalAddTransaction = ({ open, toggleModal }) => {
         comment,
       }),
     );
+    dispatch(transactionOperations.getAllTransactions());
     toggleModal();
     reset();
   };
