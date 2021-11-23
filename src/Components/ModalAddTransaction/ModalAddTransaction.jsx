@@ -23,7 +23,7 @@ const ModalAddTransaction = ({ open, toggleModal }) => {
   const classes = useStyles();
   const dispatch = useDispatch();
 
-  const dateNow = new Date().toISOString().slice(0, 10);
+  // const dateNow = new Date().toISOString().slice(0, 10);
 
   const [isChecked, setIsChecked] = useState(true);
   const [category, setCategory] = useState('');
@@ -56,12 +56,12 @@ const ModalAddTransaction = ({ open, toggleModal }) => {
     }
   };
 
-  const sliceTime = finalDate => {
-    if (finalDate.includes('PM') || finalDate.includes('AM')) {
-      return finalDate.slice(0, finalDate.length - 2);
-    }
-    return finalDate;
-  };
+  // const sliceTime = finalDate => {
+  //   if (finalDate.includes('PM') || finalDate.includes('AM')) {
+  //     return finalDate.slice(0, finalDate.length - 2);
+  //   }
+  //   return finalDate;
+  // };
 
   const reset = () => {
     setCategory('');
